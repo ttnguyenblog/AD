@@ -26,3 +26,8 @@ dsadd user "cn=$username,$ouPath" -samid $username -upn $upn -display "$displayN
     Invoke-Expression $dsaddCommand
 }
 ```
+# Get info user
+
+```bash
+get-aduser -filter * -Properties * | select displayname, name, UserPrincipalName | export-csv -path c:\export-all-2.csv
+```
