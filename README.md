@@ -89,3 +89,11 @@ Domain          Name    IPv4Address     DNSServer
 domain1.local   DC1     192.168.1.10    8.8.8.8 8.8.4.4
 domain2.local   DC2     192.168.2.20    8.8.8.8 1.1.1.1
 ```
+## Chuyển đổi master role
+
+```bash
+netdom query fsmo
+
+#chuyển fsmo về máy chủ TCB-AD-06
+Move-ADDirectoryServerOperationMasterRole –Identity “TCB-AD-06” –OperationMasterRole 0,1,2,3,4
+```
