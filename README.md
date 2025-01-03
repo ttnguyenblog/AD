@@ -97,3 +97,9 @@ netdom query fsmo
 #chuyển fsmo về máy chủ TCB-AD-06
 Move-ADDirectoryServerOperationMasterRole –Identity “TCB-AD-06” –OperationMasterRole 0,1,2,3,4
 ```
+
+- **Schema master**: đây là zone quản lý Active Directory Schema, làm nhiệm vụ đồng bộ cấu trúc của Schema AD tới tất cả các domain. Đây là role duy nhất trên toàn forest.
+- **Domain naming master**: đây cũng là zone duy nhất trên toàn forest có nhiệm vụ quản lý các tác vụ khi add thêm 1 child domain vào forest (VD quản lý không để add thêm 1 child domain có cùng “tên” với child domain khác)
+- **RID master**: mỗi một domain đều sẽ có zone này, có tác dụng quản lý, cung cấp một dãy RIDs (relaytive IDs) là các mã định danh. Khi mất role RID bị mất hoặc chết thì hệ thống sẽ không thể tạo được thêm được user hoặc computer mới trong AD
+- **PDC emulate master**: mỗi một domain đều sẽ có zone này. DC nắm PDC role sẽ được các member ưu tiên tìm đến để chứng thực đầu tiên. Zone PDC quản lý cả việc thay đổi password, thay đổi các Group Policy và quản lý đồng bộ thời gian trên từng domain
+- **Infrastructure master**: có tác dụng đứng ra thực hiện các tác vụ “chuyển dịch” các GUID, SID và Distinguished Names giữa các domain. VD như khi thực hiện Add 1 user từ một domain vào một security group trong một domain khác thì Infratructe zone sẽ thực hiện. Hay phân quyền một user ở domain cha có quyền hạn trên tài nguyên của child domain thì role Infratrute này sẽ thực hiện.
