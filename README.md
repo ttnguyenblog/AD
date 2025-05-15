@@ -94,8 +94,8 @@ domain2.local   DC2     192.168.2.20    8.8.8.8 1.1.1.1
 ```bash
 netdom query fsmo
 
-#chuyển fsmo về máy chủ TCB-AD-06
-Move-ADDirectoryServerOperationMasterRole –Identity “TCB-AD-06” –OperationMasterRole 0,1,2,3,4
+#chuyển fsmo về máy chủ AD-06
+Move-ADDirectoryServerOperationMasterRole –Identity “AD-06” –OperationMasterRole 0,1,2,3,4
 ```
 
 - **Schema master**: đây là zone quản lý Active Directory Schema, làm nhiệm vụ đồng bộ cấu trúc của Schema AD tới tất cả các domain. Đây là role duy nhất trên toàn forest.
