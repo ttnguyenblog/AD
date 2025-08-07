@@ -108,4 +108,5 @@ Move-ADDirectoryServerOperationMasterRole –Identity “AD-06” –OperationMa
 ## DUMP File
 
 ```bash
-certuntil -hashfile <file> MD5
+certutil -hashfile D:\v1.0.zip MD5
+
